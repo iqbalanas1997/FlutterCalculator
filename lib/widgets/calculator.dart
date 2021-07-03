@@ -2,15 +2,20 @@ import 'package:flutter/material.dart';
 
 class Calculator extends StatelessWidget {
   final String text;
+  final double textSize;
   final int fillColor;
   final int textColor;
   final double btnRadius;
+  final Function callBack;
+
   const Calculator({
     Key? key,
     required this.text,
+    this.textSize = 20,
     required this.fillColor,
     this.textColor = 0xFFFFFFFF,
     this.btnRadius = 50,
+    required this.callBack,
   }) : super(key: key);
 
   @override
@@ -34,10 +39,12 @@ class Calculator extends StatelessWidget {
                 ),
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              callBack(text);
+            },
             child: Text(
               text,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: textSize),
             )),
       ),
     );
